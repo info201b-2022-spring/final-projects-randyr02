@@ -14,7 +14,7 @@ final-projects-randyr02 created by GitHub Classroom
 - What data-driven questions do you hope to answer about this domain (share at least 3)?
   - We wonder if there was a correlation in the healthcare cost and the hospital stay length?
   - One other point we would also love to analyze is that how difference is the healthcare investment in minorities       
-  - group compare to majority?
+  group compare to majority?
   - And is there a difference in healthcare cost and nutrition?
 ## Finding Data
   - https://www.kaggle.com/datasets/ravichaubey1506/healthcare-cost
