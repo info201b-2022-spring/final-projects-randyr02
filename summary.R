@@ -15,8 +15,8 @@ library(stringr)
 
 # After downloading the dataset, the two dataset are read
 # as below
-covid_vaccination <- read.csv("/Users/minhanhtruong/Desktop/INFO201/Data/vaccinations.csv")
-covid_data <- read.csv("/Users/minhanhtruong/Desktop/INFO201/Data/owid-covid-data.csv")
+covid_vaccination <- read.csv("vaccinations.csv")
+covid_data <- read.csv("owid-covid-data.csv")
 
 # A function that takes in `covid_vaccination` dataset and returns a list 
 # of info about it:
