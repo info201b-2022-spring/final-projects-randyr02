@@ -29,8 +29,7 @@ summary_vaccinations_info$world_total_vaccinations <- covid_vaccination %>%
 summary_vaccinations_info$number_of_people_fully_vaccinated <- covid_vaccination %>%
   filter(people_fully_vaccinated == max(people_fully_vaccinated, na.rm = T)) %>%
   select(location, people_fully_vaccinated) 
-sub_vaccination_df <- covid_vaccination[covid_vaccination$location != "World", ]
-summary_vaccinations_info$continent_most_vaccinated <- sub_vaccination_df %>%
+sub_vaccination_df <- covid_vaccination[!(covid_vaccination$location == "World" | covid_vaccination$location =="High income" | covid_vaccination$location =="Upper middle income"), ]
   filter(total_vaccinations == max(total_vaccinations, na.rm = T)) %>%
   select(location, total_vaccinations) 
 summary_vaccinations_info$continent_most_people_vaccinated <- sub_vaccination_df %>%
