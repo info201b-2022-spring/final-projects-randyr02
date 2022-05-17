@@ -16,3 +16,6 @@ vaccination_dataset <- covid_vaccination[c("date", "total_vaccinations", "people
 
 #combined dataset of both dataframes
 covid <- left_join(covid_dataset, vaccination_dataset, by = "date")
+
+grouped <- group_by(covid, date)
+summarise(grouped, cases)
