@@ -18,4 +18,4 @@ vaccination_dataset <- covid_vaccination[c("date", "total_vaccinations", "people
 covid <- left_join(covid_dataset, vaccination_dataset, by = "date")
 
 grouped <- group_by(covid, date)
-avg_values <- summarise(grouped, mean_cases = mean(total_cases, na.rm = TRUE), mean_deaths = mean(total_deaths, na.rm = TRUE))
+avg_values <- summarise(grouped, avg_cases = mean(total_cases, na.rm = TRUE), avg_deaths = mean(total_deaths, na.rm = TRUE))
