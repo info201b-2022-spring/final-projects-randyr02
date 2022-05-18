@@ -55,20 +55,20 @@ summary_data_info$num_features <- ncol(covid_data)
 
 summary_data_info$world_total_deaths <- covid_data %>%
   filter(total_deaths == max(total_deaths, na.rm = T)) %>%
-  select(location, total_deaths) 
+  select(location, total_deaths, date) 
 
 summary_data_info$world_total_cases <- covid_data %>%
   filter(total_cases == max(total_cases, na.rm = T)) %>%
-  select(location, total_cases) 
+  select(location, total_cases, date) 
 
 sub_data_df <- covid_data[!(covid_data$location == "World" | covid_data$location =="High income" | covid_data$location =="Upper middle income"), ] 
 
 summary_data_info$location_max_deaths <- sub_data_df %>%
   filter(total_deaths == max(total_deaths, na.rm = T)) %>%
-  select(location, total_deaths) 
+  select(location, total_deaths, date) 
 
 summary_data_info$location_max_cases <- sub_data_df %>%
   filter(total_cases == max(total_cases, na.rm = T)) %>%
-  select(location, total_cases) 
+  select(location, total_cases, date) 
 
 

@@ -20,8 +20,10 @@ The datasets that we used was a COVID-19 dataset and a COVID Vaccination dataset
 ### Summary Paragraph
 Write a summary paragraph that includes information calculated by your summary information function
 
+From our summary of the dataset, we can see that there are `r summary_data_info$num_observations` observations and `r summary_data_info$num_features` features. In the dataset, there are a total of `r format(summary_data_info$world_total_cases$total_cases, scientific = FALSE)` cases and `r format(summary_data_info$world_total_deaths$total_deaths, scientific = FALSE)` deaths as `r summary_data_info$world_total_cases$date`
+the
 
-
+The ___ is from ___ to ___
 
 
 ### Table
