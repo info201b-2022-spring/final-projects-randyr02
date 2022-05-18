@@ -7,9 +7,9 @@ covid_data <- read.csv("owid-covid-data.csv")
 get_map <- function(df, input) {
   
   latest_data <- df %>%
-    filter(date == max(date)) %>%
-    filter(location != "World") %>%
-    filter(iso_code != "")
+    filter(!is.na(total_vaccinations)) %>%
+    group_by(iso_code) %>%
+    filter(date == max(date))
   
   #boundaries
   l <- list(color = toRGB("grey"), width = 0.5)
@@ -20,19 +20,19 @@ get_map <- function(df, input) {
   )
   
   #text
-  hover_text <- paste("Country:",
-                      latest_data$location, "<br>",
+  text <- paste(latest_data$location, "<br>",
                       "Total cases:",
-                      latest_data$total_cases,
-                      "<br>", "Total vaccinations:",
-                      latest_data$total_vaccinations)
+                      latest_data$total_cases, "<br>",
+                      "Total vaccinations:",
+                      latest_data$total_vaccinations, "<br>",
+                      "Last updated:", latest_data$date)
   
   #create map
   if (input == "cases") {
-    chloropleth_map <- plot_geo(latest_data) %>%
+    map <- plot_geo(latest_data) %>%
       add_trace(
         hoverinfo = "text", z = ~total_cases, color = ~total_cases,
-        text = hover_text, locations = ~iso_code,
+        text = text, locations = ~iso_code,
         zmin=0,
         zmax=30000000,
         marker = list(line = l)
@@ -41,12 +41,12 @@ get_map <- function(df, input) {
       layout(geo = g)
     
     #return
-    chloropleth_map
+    map
   } else {
-    chloropleth_map <- plot_geo(latest_data) %>%
+    map <- plot_geo(latest_data) %>%
       add_trace(
         hoverinfo = "text", z = ~total_vaccinations, color = ~total_vaccinations,
-        text = hover_text, locations = ~iso_code,
+        text = text, locations = ~iso_code,
         zmin=0,
         zmax=500000000,
         marker = list(line = l)
@@ -54,8 +54,8 @@ get_map <- function(df, input) {
       colorbar(title = "Total vaccinations") %>%
       layout(geo = g)
     
-    #return map
-    chloropleth_map
+    #return
+    map
   }
 }
 
