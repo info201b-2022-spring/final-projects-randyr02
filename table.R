@@ -9,10 +9,10 @@ covid_vaccination <- read.csv("/Users/aliyaali/final-projects-randyr02/vaccinati
 covid_data <- read.csv("/Users/aliyaali/final-projects-randyr02/owid-covid-data.csv")
 
 #new dataset for the covid data that includes only needed columns
-covid_dataset <- covid_data[c("location" ,"date","total_cases", "new_cases", "total_deaths", "new_deaths", "total_vaccinations")]
+covid_dataset <- covid_data[c("iso_code", "location" ,"date","total_cases", "new_cases", "total_deaths", "new_deaths", "total_vaccinations")]
 
 #new dataset for the vaccination data that includes only needed columns
-vaccination_dataset <- covid_vaccination[c("location", "date", "total_vaccinations", "people_vaccinated", "people_fully_vaccinated", "total_boosters")]
+vaccination_dataset <- covid_vaccination[c("location","iso_code", "date", "total_vaccinations", "people_vaccinated", "people_fully_vaccinated", "total_boosters")]
 
 #combined dataset of both dataframes
 covid <- left_join(covid_dataset, vaccination_dataset, by = "date")
