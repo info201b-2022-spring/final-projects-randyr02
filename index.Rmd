@@ -7,6 +7,8 @@ date: '2022-05-17'
 ```{r setup, include = FALSE}
 source("summary.R")
 source("table.R")
+source("chart1.R")
+source("chart2.R")
 
 ```
 
@@ -20,10 +22,7 @@ The datasets that we used was a COVID-19 dataset and a COVID Vaccination dataset
 ### Summary Paragraph
 Write a summary paragraph that includes information calculated by your summary information function
 
-From our summary of the dataset, we can see that there are `r summary_data_info$num_observations` observations and `r summary_data_info$num_features` features. In the dataset, there are a total of `r format(summary_data_info$world_total_cases$total_cases, scientific = FALSE)` cases and `r format(summary_data_info$world_total_deaths$total_deaths, scientific = FALSE)` deaths as `r summary_data_info$world_total_cases$date`
-the
-
-The ___ is from ___ to ___
+From our summary of the dataset, we can see that there are `r format(summary_data_info$num_observations, scientific = FALSE, big.mark=',')` observations and `r summary_data_info$num_features` features. In the dataset, there are a total of `r format(summary_data_info$world_total_cases$total_cases, scientific = FALSE, big.mark=',')` cases and `r format(summary_data_info$world_total_deaths$total_deaths, scientific = FALSE, big.mark=',')` deaths as of `r summary_data_info$world_total_cases$date`. As of `r summary_data_info$location_max_cases$date`, the location with the most cases is `r summary_data_info$location_max_cases$location` at `r format(summary_data_info$location_max_cases$total_cases, scientific = FALSE, big.mark=',')` total cases and the location with the most deaths is `r summary_data_info$location_max_deaths$location` at `r format(summary_data_info$location_max_deaths$total_deaths, scientific = FALSE, big.mark=',')` total deaths. In the World, `r summary_data_info$world_total_tests$location` led with the most tests as there was a total of `r format(summary_data_info$world_total_tests$total_tests, scientific = FALSE, big.mark=',')` tests by `r summary_data_info$world_total_tests$date`. As of `r summary_data_info$total_vaccinations$date`, in `r summary_data_info$total_vaccinations$location`, `r format(summary_data_info$total_vaccinations$total_vaccinations, scientific = FALSE, big.mark=',')` vaccinations have been administered.
 
 
 ### Table
@@ -34,6 +33,18 @@ Table is average cases and deaths per date
 ### Charts
 Describe the purpose of each chart (e.g., "this chart was intended to show the relationship between..."), render each chart, and describe pertinent observations found in each chart
 
+```{r map, warning = FALSE, echo = FALSE}
+get_map(covid_data, "cases")
+get_map(covid_data, "vaccinations")
+``` 
+In these two maps, it can be seen that the maps represent the most recent data on the total cases in the dataset. This chart shows the areas where there were the most cases. The vaccination map also shows that where the places that had the most cases also had the most vaccinations. 
 
+
+```{r scatter, warning = FALSE, echo = FALSE}
+
+get_scatter(covid_data)
+
+```
+This scatter plot shows the relationship between the total vaccinations per hundred and the total deaths per million in each country with each being colored by their respective continent. Towards the origin you can see a majority of African countries with a mixture of countries from Oceania and Asia. As you get further away from the origin, it becomes a mixture of North America and Asia and even further out is Europe and South America. This shows that in countries that have lower total vaccinations per hundred, there is more total deaths per million and as you have more total vaccinations, the total deaths per million decreases.
 
 
