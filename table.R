@@ -5,7 +5,12 @@
 
 #load the datasets and package.
 library(tidyverse)
+<<<<<<< HEAD
 covid_data <- read.csv("/Users/aliyaali/final-projects-randyr02/owid-covid-data.csv")
+=======
+covid_vaccination <- read.csv("vaccinations.csv")
+covid_data <- read.csv("owid-covid-data.csv")
+>>>>>>> 23578dd8bdaea06696a8cdfddf100d17195a6adb
 
 #new dataset for the covid data that includes only needed columns
 covid_dataset <- covid_data[c("iso_code", "location" ,"date","total_cases", "new_cases", "total_deaths", "new_deaths", "total_vaccinations")]
