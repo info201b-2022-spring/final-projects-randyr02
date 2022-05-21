@@ -5,7 +5,11 @@
 
 #load the datasets and package.
 library(tidyverse)
+<<<<<<< HEAD
 
+=======
+library(stringr)
+>>>>>>> 319687f05207ab9a43cb81ef691b4695436f35c1
 covid_data <- read.csv("owid-covid-data.csv")
 
 #new dataset for the covid data that includes only needed columns
