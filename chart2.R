@@ -19,8 +19,7 @@ get_scatter <- function(df) {
     geom_point(mapping = aes(x = total_vaccinations_per_hundred,
                              y = total_deaths_per_million,
                              color = continent,
-                             text = paste("country:", location))
-    ) +
+                             text = paste("country:", location))) +
     labs(
       x = "Total Vaccinations per hundred",
       y = "Total Deaths per million")
