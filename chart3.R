@@ -42,5 +42,3 @@ get_bar <- function(df, area) {
   # Make it interactive
   ggplotly(bar)
 }
-
-get_bar(covid_data, "OWID_WRL")

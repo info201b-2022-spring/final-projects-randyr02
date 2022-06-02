@@ -68,6 +68,3 @@ get_map <- function(df, input) {
     
   }
 }
-
-get_map(covid_data, "cases")
-get_map(covid_data, "vaccinations")

@@ -40,5 +40,3 @@ get_scatter <- function(df) {
   # Make it interactive
   ggplotly(scatter)
 }
-
-get_scatter(covid_data)
