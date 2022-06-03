@@ -12,6 +12,11 @@ source("chart3.R")
 # Define server function
 server <- function(input, output) {
   
+  ## Image on introduction page
+  output$image <- renderUI({ 
+    tags$img(src = "https://phil.cdc.gov//PHIL_Images/23311/23311_lores.jpg") 
+    }) 
+
   ##Scatter plot
   output$plot <- renderPlotly({
     get_scatter(covid_data)
@@ -26,4 +31,6 @@ server <- function(input, output) {
   output$bar_graph <- renderPlotly({
     get_bar(covid_data, input$choose_country_bar)
   })
+  
+  
 }
