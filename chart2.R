@@ -17,8 +17,8 @@ get_scatter <- function(df) {
 
   # Remove NAs and non-location observations, and get the latest data
   latest_data <- df %>%
-    filter(!is.na(total_vaccinations_per_hundred)) %>%
-    filter(!is.na(total_deaths_per_million)) %>%
+    filter(!is.na(new_vaccinations_smoothed_per_million)) %>%
+    filter(!is.na(new_deaths_smoothed_per_million)) %>%
     filter(continent == "Africa" | continent == "Asia" |
            continent == "Europe" | continent == "North America" |
            continent == "Oceania" | continent == "South America") %>%
