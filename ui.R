@@ -13,9 +13,10 @@ continents <- data.frame(unique(covid_data$continent[covid_data$continent != ""]
 # Get country names
 countries <- data.frame(unique(covid_data$iso_code[covid_data$continent != ""]))
 
-# About page
-about <- tabPanel(
-  "About"
+# Introduction page
+introduction <- tabPanel(
+  "Introduction",
+  titlePanel("Introduction")
 )
 
 # Chart 1 page
@@ -84,14 +85,17 @@ chart_3_page <- tabPanel(
 
 # Conclusion page
 conclusion <- tabPanel(
-  "Conclusion"
+  "Conclusion",
+  titlePanel("Conclusion")
 )
 
 
 ui <- navbarPage(
   "Covid Cases and Vaccinations",
   theme = shinytheme("flatly"),
+  introduction,
   chart_1_page,
   chart_2_page,
-  chart_3_page
+  chart_3_page,
+  conclusion
 )

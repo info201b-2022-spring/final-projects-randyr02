@@ -13,14 +13,14 @@ library("plotly")
 
 # Create the scatter plot function
 get_scatter <- function(df) {
-
+  
   # Remove NAs and non-location observations, and get the latest data
   latest_data <- df %>%
     filter(!is.na(total_vaccinations_per_hundred)) %>%
     filter(!is.na(total_deaths_per_million)) %>%
     filter(continent == "Africa" | continent == "Asia" |
-           continent == "Europe" | continent == "North America" |
-           continent == "Oceania" | continent == "South America") %>%
+             continent == "Europe" | continent == "North America" |
+             continent == "Oceania" | continent == "South America") %>%
     group_by(iso_code) %>%
     filter(date == max(date))
   
@@ -29,16 +29,9 @@ get_scatter <- function(df) {
     geom_point(mapping = aes(x = total_vaccinations_per_hundred,
                              y = total_deaths_per_million,
                              color = continent,
-<<<<<<< HEAD
-                             text = paste("country:", location))) +
-||||||| f9bf2f9
-                             text = paste("country:", location))
-    ) +
-=======
                              text = paste("country:", location, "<br>", 
                                           "updated:", date))
     ) +
->>>>>>> 6a842e15de034aa5321015e14dc7fbe17e1be29b
     labs(
       x = "Total Vaccinations per hundred",
       y = "Total Deaths per million",
