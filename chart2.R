@@ -36,7 +36,7 @@ get_scatter <- function(df) {
     labs(
       x = "New Vaccinations per million",
       y = "New Deaths per million",
-      title = "Total Deaths vs Total Vaccinations")
+      title = "New Deaths vs New Vaccinations")
   
   # Make it interactive
   ggplotly(scatter)
