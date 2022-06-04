@@ -100,7 +100,20 @@ chart_3_page <- tabPanel(
 # Conclusion page
 conclusion <- tabPanel(
   "Conclusion",
-  titlePanel("Conclusion")
+  titlePanel("Conclusion"),
+  h3("Major Takeaways:"),
+  h5("COVID-19 has had an immense impact on the entire world for the past two years and a half. Thankfully, the development of the vaccine has helped mitigate some of the damage and that can be seen in our findings."),
+  p("As demonstrated by our map, countries that have been affected the most by the pandemic with a significant amount of cases also have a significant amount of vaccinated individuals."),
+  p("The United States, India, Brazil, and Myanmar have had the highest number of COVID-19 cases, and we observed that the United States, China, India, and Brazil have the highest vaccination rates."),
+  br(),
+  h5("Additionally, our observations show that the relationship between new deaths and vaccines is highly correlated."),
+  p("As more vaccines continue to be administered, the rate of new deaths due to COVID-19 decreases. "),
+  h5("This further emphasises the effect the development of vaccines has had on the world since the first reported cases of the virus."),
+  br(),
+  h5("Finally, cases of new deaths appear to be reducing overtime although some peaks in new deaths can be seen here and there."),
+  p("The ebbs and lows can most likely be attributed to variants of COVID that have arised through time."),
+  h5("Though for the most part in most countries across the word, cases of new deaths can be seen diminishing")
+
 )
 
 
