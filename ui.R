@@ -4,6 +4,7 @@ library("ggplot2")
 library("plotly")
 library("shinythemes")
 
+
 # Load data frame
 covid_data <- read.csv("owid-covid-data.csv")
 
@@ -16,7 +17,10 @@ countries <- data.frame(unique(covid_data$iso_code[covid_data$continent != ""]))
 # Introduction page
 introduction <- tabPanel(
   "Introduction",
-  titlePanel("Introduction")
+  titlePanel("Final Deliverable"),
+  h3("INFO 201 BE-1"),
+  h3("Authors: Vince Qian, Aliya Ali, Kaia Truong, Randy Ros"),
+  uiOutput('markdown')
 )
 
 # Chart 1 page

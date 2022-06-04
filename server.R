@@ -2,6 +2,7 @@ library(dplyr)
 library(shiny)
 library(plotly)
 library(ggplot2)
+library(knitr)
 
 covid_data <- read.csv("owid-covid-data.csv")
 
@@ -11,6 +12,10 @@ source("chart3.R")
 
 # Define server function
 server <- function(input, output) {
+  ## Introduction R Markdown
+  output$markdown <- renderUI ({
+    HTML(markdown::markdownToHTML(knit('intro_info.Rmd', quiet = TRUE)))
+  })
   
   ##Scatter plot
   output$plot <- renderPlotly({
