@@ -15,7 +15,7 @@ server <- function(input, output) {
 
   ##Scatter plot
   output$plot <- renderPlotly({
-    get_scatter(covid_data)
+    get_scatter(covid_data, input$choose_continent)
   })
   
   ##Map
@@ -25,7 +25,7 @@ server <- function(input, output) {
   
   ##Bar graph
   output$bar_graph <- renderPlotly({
-    get_bar(covid_data, input$choose_country_bar)
+    get_bar(covid_data, input$choose_country)
   })
   
   

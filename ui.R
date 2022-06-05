@@ -8,11 +8,22 @@ library("maps")
 # Load data frame
 covid_data <- read.csv("owid-covid-data.csv")
 
-# Get continent names
-continents <- data.frame(unique(covid_data$continent[covid_data$continent != ""]))
+# Get unique names
+unique_names <- covid_data %>%
+  filter(!is.na(total_vaccinations)) %>%
+  group_by(iso_code) %>%
+  filter(date == max(date))
 
-# Get country names
-countries <- data.frame(unique(covid_data$iso_code[covid_data$continent != ""]))
+continents <- unique_names %>%
+  filter(location == "Africa" | location == "Asia" |
+         location == "Europe" | location == "North America" |
+         location == "Oceania" | location == "South America")
+
+countries <- unique_names %>%
+  filter(continent != "")
+
+world <- unique_names %>%
+  filter(location == "World")
 
 # Introduction page
 introduction <- tabPanel(
@@ -73,11 +84,11 @@ chart_2_page <- tabPanel(
   titlePanel("Deaths vs. Vaccinations Plot"),
   sidebarLayout(
     sidebarPanel(
-      selectInput(inputId = "choose_country_plot",
+      selectInput(inputId = "choose_continent",
                   label = h4("Select Continent"),
-                  choices = list(
-                    "Continent" = continents$unique.covid_data.continent.covid_data.continent........),
-                  selected = "Asia")
+                  choices = list(world$location,
+                    "Continent" = continents$location),
+                  selected = "World")
     ),
     mainPanel(
       h3("Deaths vs. Vaccinations"),
@@ -99,11 +110,12 @@ chart_3_page <- tabPanel(
   titlePanel("Total Deaths over time Chart"),
   sidebarLayout(
     sidebarPanel(
-      selectInput(inputId = "choose_country_bar",
+      selectInput(inputId = "choose_country",
                   label = h4("Select Location"),
-                  choices = list(
-                    "Country" = countries$unique.covid_data.iso_code.covid_data.continent........),
-                  selected = "USA")
+                  choices = list(world$location,
+                    "Continents" = continents$location,
+                    "Country" = countries$location),
+                  selected = "World")
     ),
     mainPanel(
       h3("Total Deaths over time"),
