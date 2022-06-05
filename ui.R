@@ -119,7 +119,7 @@ chart_2_page <- tabPanel(
     mainPanel(
       h3("Death rate vs. Vaccination rate"),
       p("This chart attempts to display an interactive scatter plot to 
-        show the relationship between total vaccinations and total deaths
+        show the relationship between vaccination rate and death rate
         of all countries/locations grouped by continents."),
       plotlyOutput("plot"),
       h3("What is the correlation between death rate and vaccination rate?"),

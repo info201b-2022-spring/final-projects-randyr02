@@ -3,7 +3,7 @@
 # Exploratory Data Analysis INFO 201
 
 ## This chart attempts to display an interactive scatter plot to show
-## the relationship between total vaccinations and total deaths
+## the relationship between vaccination rate and death rate
 ## of all countries/locations.
 
 # Load libraries
