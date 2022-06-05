@@ -12,10 +12,6 @@ source("chart3.R")
 # Define server function
 server <- function(input, output) {
   
-  ## Image on introduction page
-  output$image <- renderUI({ 
-    tags$img(src = "https://phil.cdc.gov//PHIL_Images/23311/23311_lores.jpg") 
-    }) 
 
   ##Scatter plot
   output$plot <- renderPlotly({
