@@ -3,7 +3,8 @@ library("dplyr")
 library("ggplot2")
 library("plotly")
 library("shinythemes")
-
+library("htmltools")
+library("maps")
 # Load data frame
 covid_data <- read.csv("owid-covid-data.csv")
 
@@ -18,6 +19,7 @@ introduction <- tabPanel(
   "Summary",
   titlePanel("Covid-19 Data Analysis"),
   h3("Three main questions we try to answer by this Covid dataset analysis are: "),
+  br(),
   h5("First, the number of total case and vaccinations recorded so far around the world so see which specific countries are most impacted by the pandemic."),
   p("With this question, we use our world map to clearly display which specific countries have the highest cases and administered vaccinations by analyzing `total_cases` and `total_vaccinations` data based on color coding."),
   br(),
@@ -27,10 +29,7 @@ introduction <- tabPanel(
   h5("And lastly, which time period record the most new deaths throughout the pandemic with and also the number of total number of deaths over time."),
   p("To answer this question, we create a bar chart of `total_deaths` over the months of the pandemic. The color coding demonstrates the severity of the new deaths on each bar, which helps us clearly determine which months were in the peak of Covid-19."),
   br(),
-  
-  fluidRow( column( 6, tags$img(src="https://phil.cdc.gov//PHIL_Images/23311/23311_lores.jpg") ), 
-            column( 6, uiOutput(outputId = "image") ) )
-  
+  HTML('<center><img src="https://phil.cdc.gov//PHIL_Images/23311/23311_lores.jpg"></center>'),
 )
 
 # Chart 1 page
@@ -121,6 +120,7 @@ conclusion <- tabPanel(
   "Conclusion",
   titlePanel("Conclusion"),
   h3("Major Takeaways:"),
+  br(),
   h5("COVID-19 has had an immense impact on the entire world for the past two years and a half. Thankfully, the development of the vaccine has helped mitigate some of the damage and that can be seen in our findings."),
   p("As demonstrated by our map, countries that have been affected the most by the pandemic with a significant amount of cases also have a significant amount of vaccinated individuals."),
   p("The United States, India, Brazil, and Myanmar have had the highest number of COVID-19 cases, and we observed that the United States, China, India, and Brazil have the highest vaccination rates."),
