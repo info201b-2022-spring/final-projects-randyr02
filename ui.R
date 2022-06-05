@@ -103,8 +103,8 @@ chart_1_page <- tabPanel(
 
 # Chart 2 page - scatter plot
 chart_2_page <- tabPanel(
-  "Deaths vs. Vaccinations Plot",
-  titlePanel("Deaths vs. Vaccinations Plot"),
+  "Death rate vs. Vaccination rate Plot",
+  titlePanel("Death rate vs. Vaccination rate Plot"),
   
   sidebarLayout(
     sidebarPanel(
@@ -116,12 +116,12 @@ chart_2_page <- tabPanel(
     ),
     
     mainPanel(
-      h3("Deaths vs. Vaccinations"),
+      h3("Death rate vs. Vaccination rate"),
       p("This chart attempts to display an interactive scatter plot to 
         show the relationship between total vaccinations and total deaths
         of all countries/locations grouped by continents."),
       plotlyOutput("plot"),
-      h3("What is the correlation between total deaths and total vaccinations?"),
+      h3("What is the correlation between death rate and vaccination rate?"),
       p("The chart shown shows that a lot of African countries 
         have low vaccination and low new deaths per million. European
          countries have a high new deaths per million and low vaccination. There are a lot of
