@@ -18,35 +18,41 @@ get_scatter <- function(df, continent_name = "World") {
   # Remove NAs and non-location observations, and get the latest data
   if (continent_name == "World") {
     latest_data <- df %>%
-      filter(!is.na(new_vaccinations_smoothed_per_million)) %>%
-      filter(!is.na(new_deaths_smoothed_per_million)) %>%
+      filter(!is.na(total_deaths)) %>%
+      filter(!is.na(total_vaccinations)) %>%
+      filter(!is.na(population)) %>%
       filter(continent == "Africa" | continent == "Asia" |
                continent == "Europe" | continent == "North America" |
                continent == "Oceania" | continent == "South America") %>%
       group_by(iso_code) %>%
-      filter(date == max(date))
+      filter(date == max(date)) %>%
+      mutate(vaccination_rate = round(total_vaccinations/population,4),
+             death_rate = round(total_deaths/population,4))
   } else {
     latest_data <- df %>%
-      filter(!is.na(new_vaccinations_smoothed_per_million)) %>%
-      filter(!is.na(new_deaths_smoothed_per_million)) %>%
+      filter(!is.na(total_deaths)) %>%
+      filter(!is.na(total_vaccinations)) %>%
+      filter(!is.na(population)) %>%
       filter(continent == continent_name) %>%
       group_by(iso_code) %>%
-      filter(date == max(date))
+      filter(date == max(date)) %>%
+      mutate(vaccination_rate = round(total_vaccinations/population,4),
+           death_rate = round(total_deaths/population,4))
   }
   
   
   # Create the scatter plot
   scatter <- ggplot(data = latest_data) +
-    geom_point(mapping = aes(x = new_vaccinations_smoothed_per_million,
-                             y = new_deaths_smoothed_per_million,
+    geom_point(mapping = aes(x = vaccination_rate,
+                             y = death_rate,
                              color = continent,
                              text = paste("country:", location, "<br>", 
                                           "updated:", date))
     ) +
     labs(
-      x = "New Vaccinations per million",
-      y = "New Deaths per million",
-      title = "New Deaths vs New Vaccinations")
+      x = "Vaccination rate",
+      y = "Death rate",
+      title = "Death rate vs. Vaccination rate")
   
   # Make it interactive
   ggplotly(scatter)
