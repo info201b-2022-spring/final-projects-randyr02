@@ -92,7 +92,7 @@ chart_1_page <- tabPanel(
       p("This chart attempts to display an interactive map to show 
         the total COVID cases and vaccinations of all countries/locations."),
       plotlyOutput("map"),
-      h3("Which specific countries are most impacted by the pandemic?"),
+      h3("Findings"),
       p("It shows that the United States, Brazil, and India have been 
         impacted the most with the highest total cases. The map also shows that 
         the United States, Brazil, India, Indonesia, and China have the highest 
@@ -122,7 +122,7 @@ chart_2_page <- tabPanel(
         show the relationship between vaccination rate and death rate
         of all countries/locations grouped by continents."),
       plotlyOutput("plot"),
-      h3("What is the correlation between death rate and vaccination rate?"),
+      h3("Findings"),
       p("The chart shown shows that a lot of African countries 
         have low vaccination rate and low deaths rate. The data of European
          countries shows a trend that as vaccination rate increases, the death
@@ -151,7 +151,7 @@ chart_3_page <- tabPanel(
       p("This chart attempts to display an interactive bar chart to show 
         the total deaths and death rate over time for each location."),
       plotlyOutput("bar_graph"),
-      h3("Which time period recorded the most new deaths throughout the pandemic?"),
+      h3("Findings"),
       p("This chart demonstrates the amount of deaths monthly over time. In
          each country/location, they all have their own unique trend of total deaths over time. 
         In some locations, there is a massive spike and in other there is a slow steady growth.")
