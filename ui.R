@@ -18,6 +18,9 @@ countries <- data.frame(unique(covid_data$iso_code[covid_data$continent != ""]))
 introduction <- tabPanel(
   "Summary",
   titlePanel("Covid-19 Data Analysis"),
+  br(),
+  p("Team members: Kaia Truong, Aliya Ali, Randy Ros, Vince Qian"),
+  br(),
   h3("Three main questions we try to answer by this Covid dataset analysis are: "),
   br(),
   h5("First, the number of total case and vaccinations recorded so far around the world so see which specific countries are most impacted by the pandemic."),
