@@ -1,3 +1,6 @@
+# ui.R
+
+# Load libraries
 library("shiny")
 library("dplyr")
 library("ggplot2")
@@ -5,10 +8,11 @@ library("plotly")
 library("shinythemes")
 library("htmltools")
 library("maps")
+
 # Load data frame
 covid_data <- read.csv("owid-covid-data.csv")
 
-# Get unique names
+# Get names for chart pages to use
 unique_names <- covid_data %>%
   filter(!is.na(total_vaccinations)) %>%
   group_by(iso_code) %>%
@@ -46,7 +50,7 @@ introduction <- tabPanel(
   HTML('<center><img src="https://phil.cdc.gov//PHIL_Images/23311/23311_lores.jpg"></center>'),
 )
 
-# Chart 1 page
+# Chart 1 page - map
 chart_1_page <- tabPanel(
   "Total Cases & Vaccinations Map",
   titlePanel("Total Cases & Vaccinations Map"),
@@ -78,13 +82,13 @@ chart_1_page <- tabPanel(
   )
 )
 
-# Chart 2 page
+# Chart 2 page - scatter plot
 chart_2_page <- tabPanel(
   "Deaths vs. Vaccinations Plot",
   titlePanel("Deaths vs. Vaccinations Plot"),
   sidebarLayout(
     sidebarPanel(
-      selectInput(inputId = "choose_continent",
+      selectInput(inputId = "scatter_choice",
                   label = h4("Select Continent"),
                   choices = list(world$location,
                     "Continent" = continents$location),
@@ -105,12 +109,14 @@ chart_2_page <- tabPanel(
     )
   )
 )
+
+# Chart 3 page - bar chart
 chart_3_page <- tabPanel(
   "Total Deaths over time Bar Chart",
   titlePanel("Total Deaths over time Chart"),
   sidebarLayout(
     sidebarPanel(
-      selectInput(inputId = "choose_country",
+      selectInput(inputId = "bar_choice",
                   label = h4("Select Location"),
                   choices = list(world$location,
                     "Continents" = continents$location,
