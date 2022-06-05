@@ -19,12 +19,12 @@ get_bar <- function(df, area) {
     mutate(month = strftime(date, format = "%Y-%m")) %>%
     group_by(month) %>%
     summarise(monthly_total_deaths = max(total_deaths),
-              monthly_new_deaths = mean(new_deaths_per_million))
+              monthly_new_deaths_per_million = round(mean(new_deaths_per_million),3))
   
   # Create the bar chart
   bar <- ggplot(data = trend) +
     geom_col(mapping = aes(x = month, y = monthly_total_deaths,
-                           fill = monthly_new_deaths))+
+                           fill = monthly_new_deaths_per_million))+
     labs(x = "Month",
          y = "Total deaths",
          fill = "New deaths per million",
